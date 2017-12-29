@@ -851,7 +851,7 @@ namespace game
                 int color = f->state!=CS_DEAD ? 0xFFFFFF : 0x606060;
                 if(f->privilege)
                 {
-                    color = f->privilege>=PRIV_ADMIN ? 0xFF8000 : 0x40FF80;
+                    color = f->privilege>=PRIV_ADMIN ? 0xFFFFDD : 0x40FF80;
                     if(f->state==CS_DEAD) color = (color>>1)&0x7F7F7F;
                 }
                 draw_text(colorname(f), w*1800/h - fw - pw, 1650 - fh, (color>>16)&0xFF, (color>>8)&0xFF, color&0xFF);

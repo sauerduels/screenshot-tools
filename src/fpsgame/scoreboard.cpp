@@ -243,7 +243,7 @@ namespace game
                 int status = o->state!=CS_DEAD ? 0xFFFFDD : 0x606060;
                 if(o->privilege)
                 {
-                    status = o->privilege>=PRIV_ADMIN ? 0xFF8000 : 0x40FF80;
+                    status = o->privilege>=PRIV_ADMIN ? 0xFFFFDD : 0x40FF80;
                     if(o->state==CS_DEAD) status = (status>>1)&0x7F7F7F;
                 }
                 g.textf("%s ", status, NULL, colorname(o));
@@ -315,7 +315,7 @@ namespace game
                 {
                     fpsent *o = spectators[i];
                     int status = 0xFFFFDD;
-                    if(o->privilege) status = o->privilege>=PRIV_ADMIN ? 0xFF8000 : 0x40FF80;
+                    if(o->privilege) status = o->privilege>=PRIV_ADMIN ? 0xFFFFDD : 0x40FF80;
                     if(o==player1 && highlightscore)
                     {
                         g.pushlist();
@@ -346,7 +346,7 @@ namespace game
                     }
                     fpsent *o = spectators[i];
                     int status = 0xFFFFDD;
-                    if(o->privilege) status = o->privilege>=PRIV_ADMIN ? 0xFF8000 : 0x40FF80;
+                    if(o->privilege) status = o->privilege>=PRIV_ADMIN ? 0xFFFFDD : 0x40FF80;
                     if(o==player1 && highlightscore)
                     {
                         g.pushlist();

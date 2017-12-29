@@ -1,0 +1,5 @@
+# Ignore media files
+*.dmo
+*.jpg
+*.png
+

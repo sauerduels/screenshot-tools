@@ -14,11 +14,6 @@ DEMO_DIRECTORY="${CURRENT_DIRECTORY}/demos"
 # Path where the screenshots should be saved
 SCREENSHOT_DIRECTORY="${CURRENT_DIRECTORY}/screenshots"
 
-# How long to wait before taking a screenshot
-# 60500 = 1m 5s should work for most demos
-# Change this if the demo has overtime
-SCREENSHOT_DELAY="605000"
-
 
 # Path where config files are located
 SAUER_HOME="${CURRENT_DIRECTORY}/config"
@@ -52,7 +47,7 @@ NSN=2
 echo "" > "${SAUER_HOME}/script.cfg"
 for DEMO in "$DEMO_DIRECTORY"/*
 do
-    echo "demo_${SN} = [demo \"${DEMO%.dmo}\"; gamespeed $GAMESPEED; sleep $SCREENSHOT_DELAY [gamespeed 100; sleep 500 [screenshot \"${SCREENSHOT_DIRECTORY}/$(basename ${DEMO%.dmo})\"; demo_${NSN}]]]" >> "${SAUER_HOME}/script.cfg"
+    echo "demo_${SN} = [demo \"${DEMO%.dmo}\"; gamespeed $GAMESPEED; sleep 100000 [scoreboard 1]; intermission = [gamespeed 100; sleep 2000 [screenshot \"${SCREENSHOT_DIRECTORY}/$(basename ${DEMO%.dmo})\"; demo_${NSN}]]]" >> "${SAUER_HOME}/script.cfg"
     SN=${NSN}
     NSN=$(($NSN + 1))
 done

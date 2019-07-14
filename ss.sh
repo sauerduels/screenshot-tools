@@ -25,7 +25,12 @@ SAUER_EXECUTABLE="${CURRENT_DIRECTORY}/demos_client"
 SAUER_OPTIONS="-q${SAUER_HOME}"
 
 
+# Speed at which to playback the demo
 GAMESPEED="20000"
+
+# Delay in milliseconds between the beginning on intermission
+# and taking the screenshot
+SCREENSHOT_DELAY="200"
 
 # Write the script which plays the demos and takes screenshots
 #
@@ -47,7 +52,7 @@ NSN=2
 echo "" > "${SAUER_HOME}/script.cfg"
 for DEMO in "$DEMO_DIRECTORY"/*
 do
-    echo "demo_${SN} = [demo \"${DEMO%.dmo}\"; gamespeed $GAMESPEED; sleep 100000 [scoreboard 1]; intermission = [gamespeed 100; sleep 2000 [screenshot \"${SCREENSHOT_DIRECTORY}/$(basename ${DEMO%.dmo})\"; demo_${NSN}]]]" >> "${SAUER_HOME}/script.cfg"
+    echo "demo_${SN} = [demo \"${DEMO%.dmo}\"; gamespeed ${GAMESPEED}; sleep 100000 [scoreboard 1]; intermission = [gamespeed 100; sleep ${SCREENSHOT_DELAY} [screenshot \"${SCREENSHOT_DIRECTORY}/$(basename ${DEMO%.dmo})\"; demo_${NSN}]]]" >> "${SAUER_HOME}/script.cfg"
     SN=${NSN}
     NSN=$(($NSN + 1))
 done
